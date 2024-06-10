@@ -37,7 +37,7 @@ class HelloService {
       'localhost',
       port: 50051,
       options: ChannelOptions(
-        credentials: ChannelCredentials.insecure(),
+        credentials: const ChannelCredentials.insecure(),
         codecRegistry:
             CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
       ),

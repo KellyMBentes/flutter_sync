@@ -29,10 +29,10 @@ class _GRPCPageState extends State<GRPCPage> {
     } on GrpcError catch (e) {
       ///handle all grpc errors here
       ///errors such us UNIMPLEMENTED,UNIMPLEMENTED etc...
-      print(e);
+      debugPrint(e.toString());
     } catch (e) {
       ///handle all generic errors here
-      print(e);
+      debugPrint(e.toString());
     }
   }
 

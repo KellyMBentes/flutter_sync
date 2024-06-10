@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
@@ -48,13 +46,13 @@ class _MQTTPageState extends State<MQTTPage> {
         .withWillQos(MqttQos.atLeastOnce);
     client.connectionMessage = connMess;
     try {
-      print('Connecting');
+      debugPrint('Connecting');
       await client.connect();
     } catch (e) {
-      print('Exception: $e');
+      debugPrint('Exception: $e');
       client.disconnect();
     }
-    print("connected");
+    debugPrint("connected");
 
     client.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
       final recMessage = c![0].payload as MqttPublishMessage;
@@ -105,17 +103,17 @@ class _MQTTPageState extends State<MQTTPage> {
 
 // Subscribed failed callback
   void onSubscribeFail(String topic) {
-    print('Failed to subscribe $topic');
+    debugPrint('Failed to subscribe $topic');
   }
 
 // Unsubscribed callback
   void onUnsubscribed(String? topic) {
-    print('Unsubscribed topic: $topic');
+    debugPrint('Unsubscribed topic: $topic');
   }
 
 // Ping callback
   void pong() {
-    print('Ping response client callback invoked');
+    debugPrint('Ping response client callback invoked');
   }
 
   @override
@@ -123,7 +121,7 @@ class _MQTTPageState extends State<MQTTPage> {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: GridWidget(children: [
             TextFormField(
               controller: _serverController,

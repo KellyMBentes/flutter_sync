@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_sync/ui_kit/widgets/grpc_page.dart';
 import 'package:flutter_sync/ui_kit/widgets/mqtt_page.dart';
 
@@ -30,16 +28,12 @@ class _NavRailDemoState extends State<NavRail> with RestorationMixin {
 
   @override
   Widget build(BuildContext context) {
-    final destinationFirst = "MQTT";
-    final destinationSecond = "gRPC";
+    const destinationFirst = "MQTT";
+    const destinationSecond = "gRPC";
 
-    final selectedItem = <String>[
-      destinationFirst,
-      destinationSecond,
-    ];
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sync Demo"),
+        title: const Text('Sync Demo'),
       ),
       body: Row(
         children: [
@@ -51,9 +45,9 @@ class _NavRailDemoState extends State<NavRail> with RestorationMixin {
               });
             },
             labelType: NavigationRailLabelType.selected,
-            destinations: [
+            destinations: const [
               NavigationRailDestination(
-                icon: const Icon(
+                icon: Icon(
                   Icons.router,
                 ),
                 label: Text(
@@ -61,7 +55,7 @@ class _NavRailDemoState extends State<NavRail> with RestorationMixin {
                 ),
               ),
               NavigationRailDestination(
-                icon: const Icon(
+                icon: Icon(
                   Icons.cloud,
                 ),
                 label: Text(
@@ -72,8 +66,10 @@ class _NavRailDemoState extends State<NavRail> with RestorationMixin {
           ),
           const VerticalDivider(thickness: 1, width: 1),
           Flexible(
-              flex: 1,
-              child: _selectedIndex.value == 0 ? const MQTTPage() : GRPCPage()),
+            flex: 1,
+            child:
+                _selectedIndex.value == 0 ? const MQTTPage() : const GRPCPage(),
+          ),
         ],
       ),
     );
